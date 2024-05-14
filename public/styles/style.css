@@ -18,29 +18,42 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
-.logo{
-    background: url(../images/logo.jpeg);
+    flex-wrap: wrap;
 }
 
-.trade-info>div {
+.trade-info > div {
     text-align: center;
     padding: 10px;
+    flex: 1 1 200px; /* Flex-grow, flex-shrink, and flex-basis */
 }
 
-.trade-info>div p:first-child {
+.trade-info > div p:first-child {
     font-size: 1.5em;
     font-weight: bold;
 }
 
-
 .navbar-brand img {
-    width: 200px;
-    height: 50px;
+    width: 150px;
+    height: 40px;
     border-radius: 10%;
 }
 
 .table-resize {
-    padding-left: 150px;
-    padding-right: 150px;
+    padding-left: 15px;
+    padding-right: 15px;
+    overflow-x: auto;
+}
+
+@media (min-width: 500px) {
+    .table-resize {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+@media (min-width: 992px) {
+    .table-resize {
+        padding-left: 150px;
+        padding-right: 150px;
+    }
 }
