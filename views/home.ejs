@@ -16,15 +16,22 @@
       <a class="navbar-brand" href="#">
         <img src="images/logo.jpeg" alt="logo" />
       </a>
-      <div
-        class="collapse navbar-collapse justify-content-center"
-        id="navbarNav"
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
       >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="#">INR</a>
           </li>
-
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -72,30 +79,30 @@
     <div class="container mt-5">
       <h1 class="text-center">Best Price To Trade</h1>
       <div class="trade-info row">
-        <div class="col-md-2">
+        <div class="col-md-2 col-6">
           <p>0.4%</p>
           <p>In 5 min</p>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-6">
           <p>1.2%</p>
           <p>In 1 hour</p>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-6">
           <p style="font-size: 3rem">₹ 24,76,926</p>
           <p>Average BTC/INR net price including commission</p>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-6">
           <p>4.12%</p>
           <p>In 1 day</p>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-6">
           <p>9%</p>
           <p>In 7 days</p>
         </div>
       </div>
     </div>
     <div class="table-resize">
-      <table class="table table-dark">
+      <table class="table table-dark table-responsive">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -130,8 +137,7 @@
             <td class="align-middle">
               <h4 class="table-text">
                 <span
-                  >₹ <%= Math.round(item.buy * item.volume) %> / ₹ <%=
-                  Math.round(item.sell * item.volume) %></span
+                  >₹ <%= Math.round(item.buy * item.volume) %> / ₹ <%= Math.round(item.sell * item.volume) %></span
                 >
               </h4>
             </td>
@@ -142,8 +148,7 @@
             </td>
             <td class="align-middle">
               <h4>
-                ▼ ₹ <%= (Math.abs(item.sell - item.buy) *
-                item.volume).toFixed(3) %>
+                ▼ ₹ <%= (Math.abs(item.sell - item.buy) * item.volume).toFixed(3) %>
               </h4>
             </td>
           </tr>
@@ -186,5 +191,4 @@
         }
       });
     </script>
-  </body>
-</html>
+  </body
