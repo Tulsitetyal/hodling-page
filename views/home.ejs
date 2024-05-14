@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HODLING</title>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="images/logo.jpeg" alt="logo" />
+      </a>
+      <div
+        class="collapse navbar-collapse justify-content-center"
+        id="navbarNav"
+      >
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">INR</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+            >
+              BTC
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">BTC</a>
+              <a class="dropdown-item" href="#">ETH</a>
+              <a class="dropdown-item" href="#">USDT</a>
+              <a class="dropdown-item" href="#">XRP</a>
+              <a class="dropdown-item" href="#">TRX</a>
+              <a class="dropdown-item" href="#">DASH</a>
+              <a class="dropdown-item" href="#">ZECH</a>
+              <a class="dropdown-item" href="#">XEM</a>
+              <a class="dropdown-item" href="#">IOST</a>
+              <a class="dropdown-item" href="#">WIN</a>
+              <a class="dropdown-item" href="#">BTT</a>
+              <a class="dropdown-item" href="#">WRX</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="https://wazirx.com/invite/sp7pvbt6?utm_source=finstreet&utm_medium=affiliate&utm_campaign=regnow-btn"
+            >
+              BUY BTC</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="ml-auto d-flex align-items-center">
+        <div id="timer" class="timer mr-3">60</div>
+        <a href="https://telegram.org" target="_blank" class="btn btn-info mr-3"
+          >Telegram</a
+        >
+        <button id="toggleButton" class="btn btn-secondary">Dark Mode</button>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <h1 class="text-center">Best Price To Trade</h1>
+      <div class="trade-info row">
+        <div class="col-md-2">
+          <p>0.4%</p>
+          <p>In 5 min</p>
+        </div>
+        <div class="col-md-2">
+          <p>1.2%</p>
+          <p>In 1 hour</p>
+        </div>
+        <div class="col-md-2">
+          <p style="font-size: 3rem">₹ 24,76,926</p>
+          <p>Average BTC/INR net price including commission</p>
+        </div>
+        <div class="col-md-2">
+          <p>4.12%</p>
+          <p>In 1 day</p>
+        </div>
+        <div class="col-md-2">
+          <p>9%</p>
+          <p>In 7 days</p>
+        </div>
+      </div>
+    </div>
+    <div class="table-resize">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Platform</th>
+            <th scope="col">Last Traded Price</th>
+            <th scope="col">Buy/Sell Price</th>
+            <th scope="col">Difference</th>
+            <th scope="col">Savings</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach((item, index) => { %>
+          <tr>
+            <td class="align-middle">
+              <h4 class="table-text"><%= index + 1 %></h4>
+            </td>
+            <td class="align-middle">
+              <a
+                target="_blank"
+                href="https://wazirx.com/invite/sp7pvbt6?utm_source=finstreet&amp;utm_medium=affiliate&amp;utm_campaign=regnow-btn"
+              >
+                <h4 class="table-text">
+                  <span class="exchange-name"> <%= item.name %> </span>
+                </h4>
+              </a>
+            </td>
+            <td class="align-middle">
+              <h4 class="table-text">
+                ₹ <%= Math.round(item.last * item.volume) %>
+              </h4>
+            </td>
+            <td class="align-middle">
+              <h4 class="table-text">
+                <span
+                  >₹ <%= Math.round(item.buy * item.volume) %> / ₹ <%=
+                  Math.round(item.sell * item.volume) %></span
+                >
+              </h4>
+            </td>
+            <td class="align-middle">
+              <h4>
+                -<%= Math.round((item.sell - item.buy) * item.volume) / 100 %> %
+              </h4>
+            </td>
+            <td class="align-middle">
+              <h4>
+                ▼ ₹ <%= (Math.abs(item.sell - item.buy) *
+                item.volume).toFixed(3) %>
+              </h4>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      // Timer
+      let timerElement = document.getElementById("timer");
+      let time = 60;
+
+      function startTimer() {
+        let timer = setInterval(() => {
+          time--;
+          timerElement.textContent = time;
+          if (time <= 0) {
+            clearInterval(timer);
+            timerElement.textContent = "0";
+          }
+        }, 1000);
+      }
+
+      window.onload = startTimer;
+
+      // Toggle Dark Mode
+      let toggleButton = document.getElementById("toggleButton");
+      toggleButton.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        if (document.body.classList.contains("dark-mode")) {
+          document.body.style.backgroundColor = "#343a40";
+          document.body.style.color = "#f8f9fa";
+        } else {
+          document.body.style.backgroundColor = "#f8f9fa";
+          document.body.style.color = "#343a40";
+        }
+      });
+    </script>
+  </body>
+</html>
